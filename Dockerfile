@@ -5,11 +5,11 @@ WORKDIR /var/www/html
 #installig pacages we need to make our server alive
 RUN apt-get -y update
 RUN apt-get -y upgrade
-RUN apt-get -y install wget
+#RUN apt-get -y install wget
 RUN apt-get -y install nginx
 RUN apt-get -y install php7.3 php7.3-fpm php7.3-mysql php-json php-mbstring php-cli php-gd php-curl php-zip
 RUN apt-get -y install mariadb-server
-RUN apt-get -y install openssl
+#RUN apt-get -y install openssl
 RUN apt-get -y install wordpress
 RUN mv /usr/share/wordpress /var/www/html
 
@@ -28,6 +28,7 @@ COPY ./srcs/info.php /var/www/html
 COPY ./srcs/script.sh /var/www/html
 COPY ./srcs/sql_script.sh /var/www/html
 COPY ./srcs/wp-config.php /var/www/html/wordpress
+COPY ./srcs/autoindex.sh /var/www/html
 
 RUN chown -R www-data /var/www/*
 RUN chmod -R 775 /var/www/*
